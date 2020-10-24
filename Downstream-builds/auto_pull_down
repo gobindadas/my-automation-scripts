@@ -1,0 +1,7 @@
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-cluster
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-features
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-infra
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-maintenance
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-repositories
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gluster-ansible-roles
+git clone ssh://pkesavap@pkgs.devel.redhat.com/rpms/gdeploy
