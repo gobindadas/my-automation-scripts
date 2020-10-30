@@ -40,12 +40,14 @@ version_number=${version_without_v%-*}
 choped_no=${current_tag#*-}
 sub_ver="$(echo "$((choped_no + 1))" | bc)"
 
-echo $this_tag
+echo "v"$this_tag
 echo $version_number
 
 mkdir -p ~/rpmBuild/
 cd $upstream_path
-git archive $this_tag --format=tar.gz --prefix=$3-$version_number/ -o ~/rpmBuild/$3-$version_without_v.tar.gz
+git tag "v"$this_tag
+pwd
+git archive "v"$this_tag --format=tar.gz --prefix=$3-$version_number/ -o ~/rpmBuild/$3-$version_without_v.tar.gz
 
 echo "git archive $this_tag --format=tar.gz --prefix=$3-$version_number/ -o ~/rpmBuild/$3-$version_without_v.tar.gz"
 echo $downstream_path
@@ -56,7 +58,7 @@ rhpkg new-sources ~/rpmBuild/$3-$version_without_v.tar.gz
 echo "new sources"
 cat  sources
 date_is="$(date +"%a %b %d %Y")"
-awk -v date1="$date_is" -v this_tag1="$this_tag" -v desc="$6" '1;/%changelog/{printf "* "; printf date1; printf " Prajith Kesava Prasad <pkesavap@redhat.com> "; printf this_tag1; print " "; printf "- "; printf desc; print "\n"; }' $3.spec  > testfile.tmp && mv testfile.tmp $3.spec
+awk -v date1="$date_is" -v this_tag1="$this_tag" -v desc="$6" '1;/%changelog/{printf "* "; printf date1; printf " Prajith Kesava Prasad <pkesavap@redhat.com> "; printf this_tag1; print " "; printf "- "; printf desc; print "\n"; }' $4.spec  > testfile.tmp && mv testfile.tmp $4.spec
 
 git status
 git add .
